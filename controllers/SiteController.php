@@ -97,9 +97,12 @@ class SiteController extends Controller {
 					'site/ver-premio?token=' . $premioUsuario->txt_token
 				]);
 				$urlCorta = $this->getShortUrl($link);
-				$mensajeTexto = "Felicidades ganaste ".$premio->txt_nombre." ".$link;
+				
+				$mensajeTexto = "Felicidades reclama tu premio ".$urlCorta;
+				$mensajeTexto;
+				
 				$mensajes = new Mensajes();
-				$resp = $mensajes->mandarMensage($mensajeTexto, $paciente->txt_telefono_contacto);
+				$resp = $mensajes->mandarMensage($mensajeTexto, $usuario->txt_telefono_celular);
 
 				return $this->redirect(['ver-premio', 'token'=>$premioUsuario->txt_token]);
 			}
