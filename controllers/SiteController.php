@@ -69,7 +69,7 @@ class SiteController extends Controller {
 	 *
 	 * @return string
 	 */
-	public function actionIndex() {
+	public function actionIndex(){
 		$usuario = new EntUsuarios ();
 
 		return $this->render ( 'inicio' );
