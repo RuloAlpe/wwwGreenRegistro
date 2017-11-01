@@ -12,6 +12,8 @@ use yii\db\Expression;
 use app\models\ViewPremiosRestantes;
 use app\models\RelUsuarioPremio;
 use app\models\ViewUsuarioDatos;
+use app\models\Mensajes;
+use app\models\CatPremios;
 
 class SiteController extends Controller {
 	/**
@@ -80,11 +82,27 @@ class SiteController extends Controller {
 
 		if ($usuario->load ( Yii::$app->request->post () )) {
 
-
+			$usuario->txt_token = $this->getToken();
 			if ($usuario->save ()) {
 
+				$premio = CatPremios::find()->orderBy(new Expression('rand()'))->one();
 
-				return $this->render('premio');
+				$premioUsuario = new RelUsuarioPremio();
+				$premioUsuario->id_premio = $premio->id_premio;
+				$premioUsuario->id_usuario = $usuario->id_usuario;
+				$premioUsuario->txt_token = $this->getToken();
+				$premioUsuario->save();
+
+				$link = Yii::$app->urlManager->createAbsoluteUrl([
+					'site/ver-premio?token=' . $premioUsuario->txt_token
+				]);
+				$urlCorta = $this->getShortUrl($link);
+				$mensajeTexto = "Felicidades ganaste ".$premio->txt_nombre." ".$link;
+				$mensajes = new Mensajes();
+
+				//$resp = $mensajes->mandarMensage($mensajeTexto, $paciente->txt_telefono_contacto);
+				
+				return $this->redirect(['ver-premio', 'token'=>$premioUsuario->txt_token]);
 			}
 
 			
@@ -95,6 +113,27 @@ class SiteController extends Controller {
 		] );
 	}
 
+	private function getShortUrl($url)
+	{
+		$urlAutenticate = 'http://dgom.mobi';
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $urlAutenticate);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+		curl_setopt($ch, CURLOPT_POSTFIELDS, 'user=userGreenSaco&pass=passGreenSacro&app=GreenSacro&url=' . $url);
+		curl_setopt($ch, CURLOPT_POSTREDIR, 3);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		
+		// in real life you should use something like:
+		// curl_setopt($ch, CURLOPT_POSTFIELDS,
+		// http_build_query(array('postvar1' => 'value1')));
+		
+		// receive server response ...
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$server_output = curl_exec($ch);
+		curl_close($ch);
+		return $server_output;
+	}
+
 	public function actionVerPremio($token=""){
 		$nombrePremio = "<h3>¡Estuviste muy cerca!</h3>
 			<h1>Mejor suerte para la próxima</h1>
@@ -102,10 +141,11 @@ class SiteController extends Controller {
 		$usuarioPremio = RelUsuarioPremio::find()->where(['txt_token'=>$token])->one();
 
 		if($usuarioPremio){
-			$nombrePremio = $usuarioPremio->idPremio->txt_nombre;
+			$nombrePremio = $usuarioPremio->idPremio;
+			return $this->render('premio',['premio'=>$nombrePremio]);
 		}
 
-		return $this->render('premio',['nombrePremio'=>$nombrePremio]);
+		
 	}
 
 	/**

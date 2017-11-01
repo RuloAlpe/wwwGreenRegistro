@@ -10,6 +10,8 @@ use Yii;
  * @property string $id_usuario
  * @property string $id_premio
  * @property string $txt_token
+ * @property string $txt_token_corto
+ * @property string $fch_premio
  *
  * @property CatPremios $idPremio
  * @property EntUsuarios $idUsuario
@@ -32,7 +34,8 @@ class RelUsuarioPremio extends \yii\db\ActiveRecord
         return [
             [['id_usuario', 'id_premio', 'txt_token'], 'required'],
             [['id_usuario', 'id_premio'], 'integer'],
-            [['txt_token'], 'string', 'max' => 100],
+            [['fch_premio'], 'safe'],
+            [['txt_token', 'txt_token_corto'], 'string', 'max' => 100],
             [['txt_token'], 'unique'],
             [['id_premio'], 'exist', 'skipOnError' => true, 'targetClass' => CatPremios::className(), 'targetAttribute' => ['id_premio' => 'id_premio']],
             [['id_usuario'], 'exist', 'skipOnError' => true, 'targetClass' => EntUsuarios::className(), 'targetAttribute' => ['id_usuario' => 'id_usuario']],
@@ -48,6 +51,8 @@ class RelUsuarioPremio extends \yii\db\ActiveRecord
             'id_usuario' => 'Id Usuario',
             'id_premio' => 'Id Premio',
             'txt_token' => 'Txt Token',
+            'txt_token_corto' => 'Txt Token Corto',
+            'fch_premio' => 'Fch Premio',
         ];
     }
 

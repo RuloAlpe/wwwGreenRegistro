@@ -8,12 +8,15 @@ use Yii;
  * This is the model class for table "cat_premios".
  *
  * @property string $id_premio
- * @property string $id_evento
  * @property string $txt_nombre
- * @property string $num_otorga
- * @property string $num_limite
+ * @property string $txt_imagen
+ * @property integer $num_otorga
+ * @property integer $num_limite
+ * @property integer $num_limite_dia
+ * @property integer $b_habilitado
  *
- * @property EntEventos $idEvento
+ * @property RelUsuarioPremio[] $relUsuarioPremios
+ * @property EntUsuarios[] $idUsuarios
  */
 class CatPremios extends \yii\db\ActiveRecord
 {
@@ -31,10 +34,9 @@ class CatPremios extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_evento'], 'required'],
-            [['id_evento', 'num_otorga', 'num_limite'], 'integer'],
-            [['txt_nombre'], 'string', 'max' => 100],
-            [['id_evento'], 'exist', 'skipOnError' => true, 'targetClass' => EntEventos::className(), 'targetAttribute' => ['id_evento' => 'id_evento']],
+            [['num_otorga', 'num_limite', 'num_limite_dia', 'b_habilitado'], 'integer'],
+            [['txt_nombre'], 'string', 'max' => 500],
+            [['txt_imagen'], 'string', 'max' => 100],
         ];
     }
 
@@ -45,18 +47,28 @@ class CatPremios extends \yii\db\ActiveRecord
     {
         return [
             'id_premio' => 'Id Premio',
-            'id_evento' => 'Id Evento',
             'txt_nombre' => 'Txt Nombre',
+            'txt_imagen' => 'Txt Imagen',
             'num_otorga' => 'Num Otorga',
             'num_limite' => 'Num Limite',
+            'num_limite_dia' => 'Num Limite Dia',
+            'b_habilitado' => 'B Habilitado',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdEvento()
+    public function getRelUsuarioPremios()
     {
-        return $this->hasOne(EntEventos::className(), ['id_evento' => 'id_evento']);
+        return $this->hasMany(RelUsuarioPremio::className(), ['id_premio' => 'id_premio']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIdUsuarios()
+    {
+        return $this->hasMany(EntUsuarios::className(), ['id_usuario' => 'id_usuario'])->viaTable('rel_usuario_premio', ['id_premio' => 'id_premio']);
     }
 }

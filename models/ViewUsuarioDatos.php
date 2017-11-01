@@ -31,7 +31,7 @@ class ViewUsuarioDatos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['txt_nombre_completo', 'txt_telefono_celular', 'num_edad'], 'required'],
+            [['txt_nombre_completo', 'txt_telefono_celular'], 'required'],
             [['num_edad'], 'integer'],
             [['fch_registro'], 'safe'],
             [['txt_nombre_completo'], 'string', 'max' => 150],

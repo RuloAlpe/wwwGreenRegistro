@@ -26,28 +26,24 @@ $this->title="Registro";
 				// Genera un input
 				echo $form->field ( $usuario, 'txt_nombre_completo' )->textInput ( [
 						'maxlength' => 150,
-						'placeholder'=>'Nombre'
+						'placeholder'=>'Nombre completo'
+				] )->label(false);
+				// Genera un input
+				echo $form->field ( $usuario, 'txt_email' )->textInput ( [
+					'placeholder'=>'Email'
 				] )->label(false);
 				// Genera un input
 				echo $form->field ( $usuario, 'txt_cp' )->textInput ( [
-						'maxlength' => 5,
-						'placeholder'=>'C.P.'
+					'maxlength' => 5,
+					'placeholder'=>'C.P.'			
 				] )->label(false);
-				// Genera un input
-				echo $form->field ( $usuario, 'num_edad' )->textInput ( [
-						'maxlength' => 2,
-						'placeholder'=>'Edad'
-				] )->label(false);
+				
 				// Genera un input
 				echo $form->field ( $usuario, 'txt_telefono_celular' )->textInput ( [
 						'type'=>'number',
 						'maxlength' => 10,
 						'placeholder'=>'Teléfono'
 				] )->label(false);
-				
-				echo  $form->field($usuario, 'txt_restaurante')
-						->dropDownList(['PESCADERÍA DEL ÁNGEL'=>'PESCADERÍA DEL ÁNGEL','MESÓN GAUCHO'=>'MESÓN GAUCHO' ])
-						->label(false);
 				?>
 				<!---->
 				<div class="terminos-wrapper">
