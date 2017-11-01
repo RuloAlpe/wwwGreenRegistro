@@ -99,7 +99,7 @@ class SiteController extends Controller {
 				$urlCorta = $this->getShortUrl($link);
 				$mensajeTexto = "Felicidades ganaste ".$premio->txt_nombre." ".$link;
 				$mensajes = new Mensajes();
-				//$resp = $mensajes->mandarMensage($mensajeTexto, $paciente->txt_telefono_contacto);
+				$resp = $mensajes->mandarMensage($mensajeTexto, $paciente->txt_telefono_contacto);
 				
 				return $this->redirect(['ver-premio', 'token'=>$premioUsuario->txt_token]);
 			}
