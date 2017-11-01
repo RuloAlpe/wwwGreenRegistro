@@ -100,7 +100,7 @@ class SiteController extends Controller {
 				$mensajeTexto = "Felicidades ganaste ".$premio->txt_nombre." ".$link;
 				$mensajes = new Mensajes();
 				$resp = $mensajes->mandarMensage($mensajeTexto, $paciente->txt_telefono_contacto);
-				
+
 				return $this->redirect(['ver-premio', 'token'=>$premioUsuario->txt_token]);
 			}
 
