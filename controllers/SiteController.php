@@ -98,7 +98,7 @@ class SiteController extends Controller {
 				]);
 				$urlCorta = $this->getShortUrl($link);
 				
-				$mensajeTexto = "Felicidades reclama tu premio ".$urlCorta;
+				$mensajeTexto = "Gracias por participar podrás consultar tu premio en la siguiente liga: ".$urlCorta;
 				
 				$mensajes = new Mensajes();
 				$resp = $mensajes->mandarMensage($mensajeTexto, $usuario->txt_telefono_celular);
