@@ -8,9 +8,11 @@ $this->title="Gracias por participar";
 <!-- Premio contenedor -->
 	<div class="js-premio-contenedor" style="text-align:center">
 		<div class="premio js-premio-ajax">
-			Gracias por participar
+			<img style="width:100%" src="<?=Url::base()."/webAssets/images/premios/".$premio->id_premio.".png"?>" />
 		</div>
+		
 		<a class="btn btn-primary" href="<?=Url::base()?>">Finalizar</a>
+		
 	</div>
 	<!-- Fin premio contenedor-->
 
