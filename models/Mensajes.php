@@ -15,7 +15,7 @@ class Mensajes{
             CURLOPT_POST => TRUE,
             CURLOPT_RETURNTRANSFER => TRUE,
             CURLOPT_POSTFIELDS => array(
-                    "apikey" => "5889483f5736e264edca721240822687f445205f",//API KEY DE CUENTA 
+                    "apikey" => Yii::$app->params ['sms-api-key'],//API KEY DE CUENTA 
                     "mensaje" => $mensaje,
                     "numcelular" => $numeroDestino,
                     "numregion" => "52"
