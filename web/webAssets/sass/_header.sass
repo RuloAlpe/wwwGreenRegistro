@@ -1,0 +1,41 @@
+/*!
+	-----------------------------------------------------------------------------
+
+	3.0 - Header
+			# Extra
+
+	-----------------------------------------------------------------------------
+	*/
+
+header
+	align-items: right
+	background-color: $white
+	//display: flex
+	//justify-content: space-between
+	height: 80px
+	padding: 0 30px 0 0
+	position: relative
+	overflow: hidden
+
+	+respond-to(sm)
+		padding: 0 20px 0 0
+
+	+respond-to(xs)
+		padding: 0 10px 0 0
+
+	h1
+		font-size: 2.25rem
+		
+		+respond-to(sm)
+			font-size: 1.8rem
+		+respond-to(xs)
+			font-size: 1.4rem
+	.logo-sura
+		padding-top: 28px
+		float: right
+		width: 80px
+		
+	.logo-huella
+		display: none
+		height: 100%
+		position: relative

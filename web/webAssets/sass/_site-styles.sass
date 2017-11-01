@@ -1,0 +1,213 @@
+/*!
+	-----------------------------------------------------------------------------
+
+	4.0 - Estilos propios del Sitio
+			# Extra
+
+	-----------------------------------------------------------------------------
+	*/
+
+body
+	background-color: $white
+
+.aviso-box
+	display: block
+	width: 60%
+	padding: 20px
+	background-color: $white
+	border-radius: 5px
+	position: absolute
+	top: 50%
+	left: 50%
+	margin-left: -30%
+	margin-top: -300px
+	+box-shadow(0px 10px 30px -15px $secondary)
+	z-index: 20
+	+respond-to(xs)
+		width: 90%
+		top: 50%
+		left: 50%
+		margin-left: -45%
+		margin-top: -50%
+	+respond-to(xx)
+		width: 100%
+		position: absolute
+		top: 0
+		left: 0
+		margin-left: 0
+		margin-top: 0
+		padding-bottom: 50px
+
+	.close-btn-wrapper
+		text-align: right
+
+		a
+			width: 10px
+			font-size: .8em
+			font-weight: $regular
+
+	p
+		margin: 20px auto
+		text-align: justify
+		line-height: 1.5em
+		+respond-to(xs)
+			text-align: left
+
+	a.btn
+		width: 100%
+		+respond-to(xx)
+			position: fixed
+			bottom: 10px
+			left: 45%
+			margin-left: -45%
+
+.container
+	display: flex
+	align-items: center
+	justify-content: center
+	background-color: transparent
+	width: 100%
+	height: 100vh
+	z-index: 1
+
+	.form-wrapper
+		margin-top: 20px
+		width: 300px
+		background-color: transparent
+		input
+			outline: 0
+			box-sizing: border-box
+			display: block
+			height: 50px
+			margin: 15px 0
+			border: 2px solid $primary
+			width: 100%
+			padding: 0 15px
+			border-radius: 3px
+			font-family: $f-base
+			font-weight: $bold
+			background-color: $white
+			color: $secondary
+		input::placeholder
+				opacity: .7
+		.help-block
+			font-size: .8em
+			text-indent: 10px
+			color: $secondary
+
+		.terminos-wrapper
+			margin: 20px 0
+			display: flex
+			align-items: center
+			justify-content: flex-start
+			.check-box
+				display: inline-block
+				height: 20px
+				width: 20px
+				border-right: 2px
+				border: 1px solid $secondary
+				box-sizing: border-box
+				border-radius: 3px
+				margin-right: 10px
+			p
+				display: inline-block
+				width: auto
+				margin: 0
+				padding: 0
+				font-size: .75em
+
+		.form-cta-wrapper
+			text-align: right
+			a
+				margin: 0 auto
+
+
+
+	/* Para la pantalla de premio */
+
+	.premio
+		width: 500px
+		text-align: center
+		+respond-to(xs)
+			width: 90%
+			margin: 0 auto
+		h1,h3,p
+			margin-bottom: 10px
+		h1
+			color: $accent
+			max-width: 100%
+		h3
+			color: $accent
+
+		p
+			margin-bottom: 20px
+
+.container-ribbon,
+.container-premio
+	flex-direction: column
+	background:
+		image: url("../images/ribbon.png")
+		position: top right
+		repeat: no-repeat
+
+	a
+		margin-top: 100px
+		+respond-to(xx)
+			margin-top: 50px
+
+.container-premio
+	background:
+		image: url("../images/logo-fa-with-ribbon.png")
+		position: top left
+		repeat: no-repeat
+		size: 60%
+
+.container-home
+	justify-content: center
+	align-items: center
+	background:
+		//image: url("../images/web-bkgd.jpg")
+		position: center
+		repeat: no-repeat
+		size: cover
+	+respond-to(xs)
+		background:
+			//image: url("../images/web-bkgd-movil.jpg")
+
+
+	.selecciona-tarjeta-wrapper
+		text-align: center
+		margin-top: 300px
+		//margin-right: 70px
+		//margin-bottom: 150px
+		// background-color: rgba(216, 216, 216, 0.3)
+		// border-radius: 5px
+		// padding: 20px
+		h3
+			margin-bottom: 20px
+
+		a
+			border-radius: 50px
+			margin: 0 10px
+
+.logo
+	position: absolute
+	z-index: -1
+	bottom: 40px
+	right: 40px
+	+respond-to(xs)
+		width: 100px
+		margin-left: -50px
+		left: 50%
+		bottom: 20px
+
+
+.logo-evento
+	position: fixed
+	top: 0%
+	left: 0%
+	z-index: 1
+	//width: 60%
+	+respond-to(xs)
+		width: 90%
+		//margin-left: -45%
