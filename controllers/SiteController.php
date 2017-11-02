@@ -103,7 +103,7 @@ class SiteController extends Controller {
 				$mensajes = new Mensajes();
 				$resp = $mensajes->mandarMensage($mensajeTexto, $usuario->txt_telefono_celular);
 
-				return $this->redirect('finalizar');
+				return $this->render('finalizar');
 			}
 
 			
