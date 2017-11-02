@@ -186,7 +186,7 @@ class SiteController extends Controller {
 			$arrayCsv [$i] ['nombreCompleto'] = $data->txt_nombre_completo;
 			$arrayCsv [$i] ['telefonoCelular'] = $data->txt_telefono_celular;
 			$arrayCsv [$i] ['codigoPostal'] = $data->txt_cp;
-			$arrayCsv [$i] ['txtEmail'] = $data->num_edad;
+			$arrayCsv [$i] ['txtEmail'] = $data->txt_email;
 			$arrayCsv [$i] ['fchRegistro'] = $data->fch_registro;
 			$arrayCsv [$i] ['aceptoTerminos'] = $data->acepto_terminos;
 			$arrayCsv [$i] ['premio'] = $data->txt_premio;
