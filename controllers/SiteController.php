@@ -103,7 +103,7 @@ class SiteController extends Controller {
 				$mensajes = new Mensajes();
 				$resp = $mensajes->mandarMensage($mensajeTexto, $usuario->txt_telefono_celular);
 
-				return $this->redirect(['ver-premio', 'token'=>$premioUsuario->txt_token]);
+				return $this->redirect('finalizar');
 			}
 
 			
@@ -186,7 +186,7 @@ class SiteController extends Controller {
 			$arrayCsv [$i] ['nombreCompleto'] = $data->txt_nombre_completo;
 			$arrayCsv [$i] ['telefonoCelular'] = $data->txt_telefono_celular;
 			$arrayCsv [$i] ['codigoPostal'] = $data->txt_cp;
-			$arrayCsv [$i] ['numEdad'] = $data->num_edad;
+			$arrayCsv [$i] ['txtEmail'] = $data->num_edad;
 			$arrayCsv [$i] ['fchRegistro'] = $data->fch_registro;
 			$arrayCsv [$i] ['aceptoTerminos'] = $data->acepto_terminos;
 			$arrayCsv [$i] ['premio'] = $data->txt_premio;
@@ -216,7 +216,7 @@ class SiteController extends Controller {
 				'Nombre completo',
 				'Telefono',
 				'C.P.',
-				'Edad',
+				'Email',
 				'Fecha registro',
 				'Acepto terminos',
 				'Premio'

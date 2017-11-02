@@ -7,9 +7,9 @@ $this->title="Gracias por participar";
 
 <!-- Premio contenedor -->
 	<div class="js-premio-contenedor" style="text-align:center">
-		<div class="premio js-premio-ajax">
-			<img style="width:100%" src="<?=Url::base()."/webAssets/images/premios/".$premio->id_premio.".png"?>" />
-		</div>
+    <h2>hemos enviado un SMS con tu premio</h2>
+		
+		<a class="btn btn-primary" href="<?=Url::base()?>">Finalizar</a>
 		
 	</div>
 	<!-- Fin premio contenedor-->
